@@ -330,3 +330,33 @@ No la uses para suplantar identidades, engañar ni acosar.
 - [Soporte de Qwen3-TTS en llama.cpp](https://github.com/ggml-org/llama.cpp/pull/26254) — PR de ngxson
 
 Código bajo licencia [MIT](LICENSE). Los pesos del modelo tienen su propia licencia.
+
+---
+
+## 🖥️ Aplicación de escritorio (Windows)
+
+Además de la interfaz web, el repositorio incluye en [`aplicacion/`](aplicacion/LEEME.md)
+una aplicación nativa para Windows que abre el clonador en **su propia ventana**
+(WebView2), sin terminal y sin navegador:
+
+- icono propio e identidad de aplicación: se puede **anclar a la barra de tareas**
+  y conserva el icono,
+- arranca `app.py` en segundo plano y oculto (`pythonw`), con instancia única,
+- accesos directos **Abrir**, **Detener** y **Ver registro** (escritorio y menú Inicio),
+- detección robusta del servidor y 3 minutos de margen para arranques en frío.
+
+Puesta en marcha rápida (Windows):
+
+```powershell
+# Dependencias de Python y llama.cpp: ver los pasos de arriba.
+# Luego crea los accesos directos:
+powershell -ExecutionPolicy Bypass -File .\aplicacion\instalar.ps1
+```
+
+Guía completa, solución de problemas y detalles técnicos:
+[`aplicacion/LEEME.md`](aplicacion/LEEME.md).
+Código fuente de la ventana: [`aplicacion/fuente/Clonador.cs`](aplicacion/fuente/Clonador.cs).
+
+> Los pesos del modelo (~1,5 GB), las voces de referencia y los audios generados
+> **no** se suben al repositorio (están en `.gitignore`): se descargan o se crean en
+> local con `descargar_modelo.py` o desde la propia aplicación.
